@@ -42,10 +42,18 @@
 - 所有的订阅服务回调都会执行此代理方法，需要对回调的data数据响应头做处理，如有订阅服务必须实现此代理方法</r>
  ```
 - (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
- NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
- NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
- NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
- uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
- //cmd便是响应的服务类型，以此来处理相应的业务
+    NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
+    NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
+    NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
+    uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
+    //cmd便是响应的服务类型，以此来处理相应的业务
  }
  ```
+
+**常见问题**
+证书报错：
+- 选择工程->Capabilities->Push Notifications 关闭此选项
+- 选择工程->Capabilities->Background Modes 关闭此选项
+
+路径报错：
+- 选择工程->Build settings->Prefix Header 把工程中PrefixHeader.pch拖入此处即可
