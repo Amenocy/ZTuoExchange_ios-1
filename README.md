@@ -50,7 +50,7 @@
  }
  ```
 
-**常见问题**
+**常见问题** </r>
 证书报错：
 - 选择工程->Capabilities->Push Notifications 关闭此选项
 - 选择工程->Capabilities->Background Modes 关闭此选项
