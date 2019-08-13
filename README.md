@@ -26,6 +26,6 @@
 - Controllers 业务控制器目录 </r>
 
 **数据socket**</r>
-···objc
+···object-c
 SocketManager.h
 
