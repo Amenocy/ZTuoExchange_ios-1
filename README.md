@@ -16,6 +16,11 @@
  **注意事项**</r>
 1. 为个人开发者账号真机测试，项目去掉了推送，如有需要请自行添加。</r>
 2. 项目中集成的百度和友盟统计，如有需要请自己申请相关资料。</r></r>
+3. 定义的全局常量在constant.h文件中
+ 
+>工程
+>>Common
+>>>constant.h
 
  **结构简介**</r>
 - resource 图片资源文件 </r>
@@ -26,7 +31,7 @@
 
 **数据通讯socket**</r>
 
-工程中socket通讯都由socket类同一管理</r>
+工程中socket通讯都由SocketManager类同一管理</r>
 
 服务订阅方法：</r>
 - `- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`</r>
