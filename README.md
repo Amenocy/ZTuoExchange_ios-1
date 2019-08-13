@@ -38,6 +38,6 @@
 - 注意：订阅socket推送的参数都是与服务端协商好的，如果有变动需要与服务端协商沟通</r>
 
 订阅消息回调代理方法：</n>
-`- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;`</n>
+- `- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;`</n>
 所有的订阅服务回调都会执行此代理方法，需要对回调的data数据响应头做处理，如有订阅服务必须实现此代理方法</r>
-`- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {</r>NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];</r>NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];</r>NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];</r>uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];</r>//cmd便是响应的服务类型，以此来处理相应的业务</r>}`
+- `- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {</r>NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];</r>NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];</r>NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];</r>uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];</r>//cmd便是响应的服务类型，以此来处理相应的业务</r>}`
