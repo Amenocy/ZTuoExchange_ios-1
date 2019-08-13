@@ -25,7 +25,26 @@
 - Controllers 业务控制器目录 </r>
 
 **数据通讯socket**</r>
-工程中socket通讯都由socket类同一管理
-
+工程中socket通讯都由socket类同一管理</r>
+服务订阅方法：
 `- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`
 
+此方法是订阅所有socket链接的方法，以下是参数含义：
+- length 消息头固定字节长度
+- sequenceId token
+- cmd 订阅服务类型
+- RequestId 
+- jsonDict 扩展json对象
+注意：订阅socket推送的参数都是与服务端协商好的，如果有变动需要与服务端协商沟通
+
+订阅消息回调：</r>
+`- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;`
+所有的订阅服务回调都会执行此代理方法，需要对回调的data数据响应头做处理</r>
+` - (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+    NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
+    NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
+    NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
+    uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
+    
+    //cmd便是响应的服务类型，以此来处理相应的业务
+    }`
