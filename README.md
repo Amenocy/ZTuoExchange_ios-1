@@ -26,7 +26,7 @@
 - Controllers 业务控制器目录 </r>
 
 **数据通讯socket**</r>
-···object-c
-SocketManager.h
-···
+工程中socket通讯都由socket类同一管理
+
+
 
