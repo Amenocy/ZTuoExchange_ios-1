@@ -25,6 +25,7 @@
 - Common 常用分类 </r>
 - Controllers 业务控制器目录 </r>
 
- **维护计划** </r>
-1. 业务解耦
+**数据socket**</r>
+···
+SocketManager.h
 
