@@ -25,7 +25,9 @@
 - Controllers 业务控制器目录 </r>
 
 **数据通讯socket**</r>
+
 工程中socket通讯都由socket类同一管理</r>
+
 服务订阅方法：</r>
 - `- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`</r>
 
