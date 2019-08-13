@@ -27,7 +27,7 @@
 **数据通讯socket**</r>
 工程中socket通讯都由socket类同一管理</r>
 服务订阅方法：</r>
-`- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`
+`- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`</r>
 
 此方法是订阅所有socket链接的方法，以下是参数含义：</r>
 - length 消息头固定字节长度</r>
