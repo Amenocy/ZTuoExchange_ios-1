@@ -40,10 +40,12 @@
 订阅消息回调代理方法：</n>
 - `- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;`</n>
 - 所有的订阅服务回调都会执行此代理方法，需要对回调的data数据响应头做处理，如有订阅服务必须实现此代理方法</r>
- ```- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+ ```
+- (void)delegateSocket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
  NSData *endData = [data subdataWithRange:NSMakeRange(SOCKETRESPONSE_LENGTH, data.length -SOCKETRESPONSE_LENGTH)];
  NSString *endStr= [[NSString alloc] initWithData:endData encoding:NSUTF8StringEncoding];
  NSData *cmdData = [data subdataWithRange:NSMakeRange(12,2)];
  uint16_t cmd=[SocketUtils uint16FromBytes:cmdData];
  //cmd便是响应的服务类型，以此来处理相应的业务
- }```
+ }
+ ```
