@@ -1,4 +1,3 @@
-
 **说明文档**</r>
 - 代码的最后使用环境是：Xcode10.0, 最低支持版本iOS8.0 </n>
 
@@ -28,5 +27,5 @@
 **数据通讯socket**</r>
 工程中socket通讯都由socket类同一管理
 
-
+`- (void)sendMsgWithLength:(int)length withsequenceId:(long)sequenceId withcmd:(short)cmd withVersion:(int)Version withRequestId:(int)RequestId withbody:(NSDictionary*)jsonDict;`
 
